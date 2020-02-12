@@ -10,5 +10,9 @@ It can automatically setup:
 
 Modify the ``metallb-config.yaml`` and run:
 ```
-$ ./install-k8.sh --metallb-config metallb-config.yaml --dashboard enable --docker-remote-api enable --network-adapter ens33
+$ ./install-k8.sh \
+  --metallb-config metallb-config.yaml \
+  --dashboard enable \
+  --docker-remote-api enable \
+  --network-adapter ens33
 ```
