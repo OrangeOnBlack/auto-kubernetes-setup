@@ -1,16 +1,19 @@
 # Auto Kubenetes Setup
 
-It can automatically setup:
-* K8 itself
-* WeaveNet
-* Metallb
-* K8 Dashboard
-* Enable Docker API for remote access
+Intended to use with Ubuntu 18.04 LTS (Bionic).
+Installs Kubernetes 1.14 to maintain compatibility with the [Python Kubernetes API](https://github.com/kubernetes-client/python).
 
+It can automatically:
+* Install K8s itself
+* Install ``WeaveNet`` as Container Network Interface/NetworkPlugin
+* Install ``Metallb`` as Load-Balancer to assign IP addresses to Deployments using Services
+* Install K8s Dashboard
+* Enable remote access for the Docker API
+* Enable Bahs Automcompletion
 
 Modify the ``metallb-config.yaml`` and run:
 ```
-$ ./install-k8.sh \
+$ ./install-k8s.sh \
   --metallb-config metallb-config.yaml \
   --dashboard enable \
   --docker-remote-api enable \
