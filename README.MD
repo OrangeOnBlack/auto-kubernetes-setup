@@ -9,7 +9,7 @@ It can automatically:
 * Install ``Metallb`` as Load-Balancer to assign IP addresses to Deployments using Services
 * Install K8s Dashboard
 * Enable remote access for the Docker API
-* Enable Bahs Automcompletion
+* Enable Bash Autocompletion
 
 Modify the ``metallb-config.yaml`` and run:
 ```
