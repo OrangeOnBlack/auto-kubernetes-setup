@@ -127,16 +127,56 @@ install_k8s() {
     fi
 }
 
+test() {
+    echo 'success'
+    USERNAME=$(id -nu)
+
+    # argument parsing
+    POSITIONAL=()
+    while [[ $# -gt 0 ]]
+    do
+    key="$1"
+
+    case $key in
+        -m|--metallb-config)
+        METALLB_CONF="$2"
+        shift
+        shift
+        ;;
+        -d|--dashboard)
+        DASHBOARD="$2"
+        shift
+        shift
+        ;;
+        -r|--docker-remote-api)
+        DOCKER_REMOTE_API="$2"
+        shift
+        shift
+        ;;
+        -n|--network-adapter)
+        NETWORK_ADAPTER="$2"
+        shift
+        shift
+        ;;
+        *)
+        POSITIONAL+=("$1")
+        shift
+        ;;
+    esac
+    done
+    set -- "${POSITIONAL[@]}" # restore positional parameters
+    echo $NETWORK_ADAPTER
+}
+
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     if [[ $(awk -F= '/^NAME/{print $2}' /etc/os-release) == '"Ubuntu"' ]]; then
         if [[ $(lsb_release -rs) == "18.04" ]]; then
-               echo "Compatible version detected"
-               install_k8s
-        else
-               echo "Non-compatible version detected"
-               exit 1
+               echo "Compatible OS detected"
+               install_k8s $@
         fi
     fi
+else
+   echo "Non-compatible OS or OS version detected"
 fi
 
 # UNINSTALL K8
