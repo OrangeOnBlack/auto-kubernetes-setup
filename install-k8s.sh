@@ -5,7 +5,6 @@
 # ./install-k8.sh --metallb-config metallb-config.yaml --dashboard enable --docker-remote-api enable --network-adapter ens33
 
 install_k8s() {
-    exit 0
     USERNAME=$(id -nu)
 
     # argument parsing
@@ -141,10 +140,10 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 fi
 
 # UNINSTALL K8
-# kubectl drain <node name> — delete-local-data — force — ignore-daemonsets
+# kubectl drain <node name> --delete-local-data --force --ignore-daemonsets
 # kubectl delete node <node name>
 
-# kubeadm reset
+# sudo kubeadm reset
 
 # debian-based
 # sudo apt-get purge kubeadm kubectl kubelet kubernetes-cni kube* 
