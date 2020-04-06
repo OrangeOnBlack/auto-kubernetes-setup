@@ -86,9 +86,7 @@ install_k8s() {
 
     printf "${ORANGE}[Installing Kubernetes]${NC}\n"
     curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-    sudo bash -c 'cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-    deb https://apt.kubernetes.io/ kubernetes-xenial main
-    EOF'
+    echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
     sudo apt-get update
     sudo apt-get install -y kubelet=1.14.8-00 kubeadm=1.14.8-00 kubectl=1.14.8-00
     sudo apt-mark hold kubelet kubeadm kubectl
