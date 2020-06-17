@@ -1,6 +1,7 @@
 # Auto Kubenetes Setup
 
 Intended to be used with Ubuntu 18.04 LTS (Bionic) **Server Version**.
+
 Installs Kubernetes 1.14 to maintain compatibility with the [Python Kubernetes API](https://github.com/kubernetes-client/python).
 
 It can automatically:
