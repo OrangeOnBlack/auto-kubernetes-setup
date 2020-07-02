@@ -20,3 +20,25 @@ $ ./install-k8s.sh \
   --docker-remote-api enable \
   --network-adapter ens33
 ```
+
+
+## Add Nodes to the Master (Multi-Node Setup)
+
+**Prerequisites on the slave nodes**:
+
+```
+$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+$ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+$ sudo apt-get update
+$ sudo apt-get install -y kubelet=1.14.8-00 kubeadm=1.14.8-00 kubectl=1.14.8-00
+$ sudo apt-mark hold kubelet kubeadm kubectl
+```
+
+**Generate the *join-command* on the master node**:
+
+```
+$ kubeadm token create --print-join-command
+kubeadm join 131.234.28.139:6443 --token y784fc.hgr6uxqkmipg52xp --discovery-token-ca-cert-hash sha256:ce50c08ec52543833784c6946c91c95507ba094bca7335c991f65676ae1e859f
+```
+
+**Run the *join-command* (``kubeadm join ...```) on each slave node**
