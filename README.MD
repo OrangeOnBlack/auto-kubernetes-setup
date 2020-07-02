@@ -41,4 +41,4 @@ $ kubeadm token create --print-join-command
 kubeadm join 131.234.28.139:6443 --token y784fc.hgr6uxqkmipg52xp --discovery-token-ca-cert-hash sha256:ce50c08ec52543833784c6946c91c95507ba094bca7335c991f65676ae1e859f
 ```
 
-**Run the *join-command* (``kubeadm join ...```) on each slave node**
+**Run the *join-command* (``kubeadm join ...``) on each slave node**
